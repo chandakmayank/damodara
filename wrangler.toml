@@ -1,0 +1,10 @@
+name = "Damodara App"
+main = "src/index.ts"
+compatibility_date = "2022-11-07"
+node_compat = true
+
+[[ d1_databases ]]
+binding = "damodara_db"
+database_name = "damodara-db"
+database_id = "93e5bc41-2d0d-4c6b-aa5a-67745ee13768"
+migrations_dir = "drizzle"
