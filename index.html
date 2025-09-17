@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Preacher Visit Form</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
+    <style>
+        .container {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+        
+        .rating-display {
+            text-align: center;
+            font-weight: bold;
+            color: var(--pico-primary);
+            margin-top: 0.5rem;
+        }
+        
+        .form-section {
+            margin-bottom: 2rem;
+        }
+        
+        .form-section h3 {
+            color: var(--pico-primary);
+            border-bottom: 2px solid var(--pico-primary);
+            padding-bottom: 0.5rem;
+        }
+        
+        .range-container {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .range-container input[type="range"] {
+            flex: 1;
+        }
+        
+        .range-labels {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.875rem;
+            color: var(--pico-muted-color);
+            margin-top: 0.25rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Preacher Visit Form</h1>
+            <p>Please fill out the following information about your preacher visit.</p>
+        </header>
+
+        <main>
+            <form>
+                <!-- Personal Information Section -->
+                <div class="form-section">
+                    <h3>Personal Information</h3>
+                    
+                    <div class="grid">
+                        <div>
+                            <label for="preacher-name">
+                                Preacher Name *
+                                <input type="text" id="preacher-name" name="preacher-name" required 
+                                       placeholder="Enter preacher's full name">
+                            </label>
+                        </div>
+                        <div>
+                            <label for="host-name">
+                                Host Name *
+                                <input type="text" id="host-name" name="host-name" required 
+                                       placeholder="Enter your full name">
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <label for="host-phone">
+                        Host Phone Number *
+                        <input type="tel" id="host-phone" name="host-phone" required 
+                               placeholder="Enter your phone number">
+                    </label>
+                </div>
+
+                <!-- Visit Details Section -->
+                <div class="form-section">
+                    <h3>Visit Details</h3>
+                    
+                    <div class="grid">
+                        <div>
+                            <label for="visit-date">
+                                Visit Date *
+                                <input type="date" id="visit-date" name="visit-date" required>
+                            </label>
+                        </div>
+                        <div>
+                            <label for="visit-time">
+                                Visit Time *
+                                <input type="time" id="visit-time" name="visit-time" required>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <label for="lamps-offered">
+                        Number of Lamps Offered *
+                        <input type="number" id="lamps-offered" name="lamps-offered" required 
+                               min="0" placeholder="Enter number of lamps">
+                    </label>
+                </div>
+
+                <!-- Rating Section -->
+                <div class="form-section">
+                    <h3>Visit Rating</h3>
+                    
+                    <label for="rating">
+                        Rate your experience (1-10) *
+                        <div class="range-container">
+                            <span>1</span>
+                            <input type="range" id="rating" name="rating" min="1" max="10" value="5" required>
+                            <span>10</span>
+                        </div>
+                        <div class="range-labels">
+                            <span>Poor</span>
+                            <span>Excellent</span>
+                        </div>
+                        <div class="rating-display" id="rating-display">Rating: 5</div>
+                    </label>
+                </div>
+
+                <!-- Program Attendance Section -->
+                <div class="form-section">
+                    <h3>Program Attendance</h3>
+                    
+                    <label for="temple-program">
+                        Temple Program Attendance *
+                        <select id="temple-program" name="temple-program" required>
+                            <option value="">Select attendance status</option>
+                            <option value="attended">Attended</option>
+                            <option value="partially-attended">Partially Attended</option>
+                            <option value="not-attended">Did Not Attend</option>
+                            <option value="not-applicable">Not Applicable</option>
+                        </select>
+                    </label>
+                </div>
+
+                <!-- Feedback Section -->
+                <div class="form-section">
+                    <h3>Feedback</h3>
+                    
+                    <label for="feedback">
+                        Feedback Comments
+                        <textarea id="feedback" name="feedback" rows="4" 
+                                  placeholder="Please share your thoughts about the visit, any suggestions, or additional comments..."></textarea>
+                    </label>
+                </div>
+
+                <!-- Form Actions -->
+                <div class="form-section">
+                    <div class="grid">
+                        <button type="submit" class="contrast">Submit Form</button>
+                        <button type="reset" class="secondary">Reset Form</button>
+                    </div>
+                </div>
+            </form>
+        </main>
+    </div>
+
+    <script>
+        // Update rating display when range changes
+        const ratingInput = document.getElementById('rating');
+        const ratingDisplay = document.getElementById('rating-display');
+        
+        ratingInput.addEventListener('input', function() {
+            ratingDisplay.textContent = `Rating: ${this.value}`;
+        });
+        
+        // Form submission handler
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Collect form data
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData);
+            
+            // Display submitted data (in a real app, this would be sent to a server)
+            console.log('Form submitted with data:', data);
+            alert('Form submitted successfully! Check the console for the data.');
+        });
+    </script>
+</body>
+</html>
