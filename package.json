@@ -1,0 +1,11 @@
+{
+  "devDependencies": {
+    "drizzle-kit": "^0.31.4",
+    "tsx": "^4.20.5",
+    "wrangler": "^4.37.1"
+  },
+  "dependencies": {
+    "dotenv": "^17.2.2",
+    "drizzle-orm": "^0.44.5"
+  }
+}
